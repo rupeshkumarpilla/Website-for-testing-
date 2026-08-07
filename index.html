@@ -1,0 +1,103 @@
+<!-- 
+  index.html: The main entry point of the Rooz website
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooz - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">Rooz</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#sub-brands">Sub-Brands</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Rooz</h1>
+    <p>A home for all your favorite sub-brands</p>
+    <button class="liquid-glass-button">Explore</button>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Rooz is a brand that encompasses multiple sub-brands, each with its own unique identity and purpose.</p>
+  </section>
+
+  <!-- Sub-Brands Section -->
+  <section id="sub-brands" class="sub-brands">
+    <h2>Our Sub-Brands</h2>
+    <ul>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Spice</h3>
+          <p>Explore the world of spices with Rooz Spice</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Dry Fruits</h3>
+          <p>Discover the delicious world of dry fruits with Rooz Dry Fruits</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Packaging</h3>
+          <p>Get the best packaging solutions with Rooz Packaging</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Flavors</h3>
+          <p>Experience the world of flavors with Rooz Flavors</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Transport</h3>
+          <p>Get reliable transportation services with Rooz Transport</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sub-brand-card">
+          <h3>Rooz Greens</h3>
+          <p>Explore the world of greens with Rooz Greens</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Login Section -->
+  <section id="login" class="login">
+    <h2>Login</h2>
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button class="liquid-glass-button">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+  </section>
+
+  <!-- Floating Window for Notifications -->
+  <div class="floating-window">
+    <p>This is a notification</p>
+    <button class="close-button">Close</button>
+  </div>
+
+  <!-- Script to connect to database and add API keys -->
+  <script src="script.js"></script>
+</body>
+</html>

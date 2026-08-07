@@ -1,0 +1,66 @@
+{
+  "database": {
+    "type": "mongodb",
+    "mongodb": {
+      "uri": "mongodb://localhost:27017",
+      "database": "rooz",
+      "username": "roozuser",
+      "password": "roozpassword"
+    },
+    "mysql": {
+      "host": "localhost",
+      "port": 3306,
+      "database": "rooz",
+      "username": "roozuser",
+      "password": "roozpassword"
+    },
+    "postgres": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "rooz",
+      "username": "roozuser",
+      "password": "roozpassword"
+    }
+  },
+  "apiKeys": {
+    "googleMaps": "YOUR_GOOGLE_MAPS_API_KEY",
+    "stripe": "YOUR_STRIPE_API_KEY",
+    "facebook": "YOUR_FACEBOOK_API_KEY"
+  },
+  "notification": {
+    "type": "floatingWindow",
+    "position": "bottom-right",
+    "timeout": 5000
+  },
+  "buttons": {
+    "style": "liquidGlass",
+    "color": "#333",
+    "hoverColor": "#666"
+  },
+  "subBrands": [
+    {
+      "name": "Rooz Spice",
+      "link": "/roozspice"
+    },
+    {
+      "name": "Rooz Dry Fruits",
+      "link": "/roozdryfruits"
+    },
+    {
+      "name": "Rooz Packaging",
+      "link": "/roozpackaging"
+    },
+    {
+      "name": "Rooz Flavors",
+      "link": "/roozflavors"
+    },
+    {
+      "name": "Rooz Transport",
+      "link": "/rooztransport"
+    },
+    {
+      "name": "Rooz Greens",
+      "link": "/roozgreens"
+    }
+  ]
+}

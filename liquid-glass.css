@@ -1,0 +1,86 @@
+/* Liquid Glass Button Effect Styles */
+
+/* Liquid Glass Button Container */
+.liquid-glass-button {
+  position: relative;
+  display: inline-block;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Liquid Glass Button Glass Effect */
+.liquid-glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+/* Liquid Glass Button Hover Effect */
+.liquid-glass-button:hover {
+  background-color: #f0f0f0;
+  color: #444;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Liquid Glass Button Hover Glass Effect */
+.liquid-glass-button:hover::before {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Liquid Glass Button Active Effect */
+.liquid-glass-button:active {
+  background-color: #e0e0e0;
+  color: #555;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Liquid Glass Button Active Glass Effect */
+.liquid-glass-button:active::before {
+  opacity: 0.9;
+  transform: scale(0.9);
+}
+
+/* Liquid Glass Button Focus Effect */
+.liquid-glass-button:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Liquid Glass Button Focus Glass Effect */
+.liquid-glass-button:focus::before {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Liquid Glass Button Disabled Effect */
+.liquid-glass-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Liquid Glass Button Disabled Glass Effect */
+.liquid-glass-button:disabled::before {
+  opacity: 0.5;
+  transform: scale(1);
+}

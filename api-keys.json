@@ -1,0 +1,33 @@
+{
+  "mongodb": {
+    "uri": "mongodb://localhost:27017",
+    "database": "rooz",
+    "username": "roozuser",
+    "password": "roozpassword"
+  },
+  "mysql": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "rooz",
+    "username": "roozuser",
+    "password": "roozpassword"
+  },
+  "postgres": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "rooz",
+    "username": "roozuser",
+    "password": "roozpassword"
+  },
+  "notification": {
+    "api_key": "YOUR_NOTIFICATION_API_KEY",
+    "api_secret": "YOUR_NOTIFICATION_API_SECRET"
+  },
+  "google_maps": {
+    "api_key": "YOUR_GOOGLE_MAPS_API_KEY"
+  },
+  "other_services": {
+    "api_key": "YOUR_OTHER_SERVICE_API_KEY",
+    "api_secret": "YOUR_OTHER_SERVICE_API_SECRET"
+  }
+}

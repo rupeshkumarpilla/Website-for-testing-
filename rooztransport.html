@@ -1,0 +1,124 @@
+<!-- 
+  rooztransport.html: The page for Rooz Transport sub-brand
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooz Transport - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Add custom styles for Rooz Transport page */
+    .rooz-transport-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .rooz-transport-header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+
+    .rooz-transport-content {
+      padding: 20px;
+    }
+
+    .rooz-transport-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .rooz-transport-button:hover {
+      background-color: #444;
+    }
+
+    /* Liquid Glass Effect for Buttons */
+    .liquid-glass-button {
+      position: relative;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .liquid-glass-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0.2;
+      border-radius: 5px;
+      transform: scale(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .liquid-glass-button:hover::before {
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="roozspice.html">Rooz Spice</a></li>
+        <li><a href="roozdryfruits.html">Rooz Dry Fruits</a></li>
+        <li><a href="roozpackaging.html">Rooz Packaging</a></li>
+        <li><a href="roozflavors.html">Rooz Flavors</a></li>
+        <li><a href="rooztransport.html">Rooz Transport</a></li>
+        <li><a href="roozgreens.html">Rooz Greens</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Rooz Transport Container -->
+  <div class="rooz-transport-container">
+    <div class="rooz-transport-header">
+      <h1>Rooz Transport</h1>
+    </div>
+    <div class="rooz-transport-content">
+      <p>Welcome to Rooz Transport, your trusted partner for all your transportation needs.</p>
+      <p>We offer a wide range of services, including logistics, warehousing, and distribution.</p>
+      <button class="liquid-glass-button">Learn More</button>
+    </div>
+  </div>
+
+  <!-- Floating Window for Notification -->
+  <div class="floating-window">
+    <p>This is a notification from Rooz Transport.</p>
+    <button class="liquid-glass-button">Close</button>
+  </div>
+
+  <script>
+    // Add event listener for floating window close button
+    document.querySelector('.floating-window .liquid-glass-button').addEventListener('click', () => {
+      document.querySelector('.floating-window').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
