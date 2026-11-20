@@ -8,7 +8,7 @@ Frontend-only React + Vite website for **HONIESH**. The project is being built i
 - React 19, Vite 8, JavaScript (JSX). No backend, database, authentication provider or external service.
 - Hash-based routing (`#/`, `#/about`, `#/contact`, `#/login`) avoids an extra router dependency.
 - Company-specific content is not invented. Replaceable copy is centralized in `src/config/content.js` and marked with `PLACEHOLDER_TEXT` until approved information is supplied.
-- The original static site remains in the repository root for reference but is not part of the Vite build.
+- The original static ROOZ site has been removed; only the HONIESH React application remains.
 - Visual language: restrained editorial luxury with deep ink, warm parchment, brushed brass, serif display headings and generous whitespace.
 
 ## Prerequisites
@@ -74,7 +74,7 @@ README.md                 This file
 DEVELOPMENT.md            Architecture, security notes and migration plan
 ```
 
-The Vite root is `src/` because the legacy root `index.html` is preserved. `dist/` is emitted at the repository root.
+The Vite root is `src/` and the HTML entry is `src/index.html`. `dist/` is emitted at the repository root.
 
 ## Information still required
 

@@ -8,11 +8,11 @@ Replaceable company copy lives in `src/config/content.js`. All unsupported value
 
 UI primitives are centralized in `src/components/ui/`, layout primitives in `src/components/layout/`, and all styling starts from tokens in `src/styles/tokens.css`. The CSS layers are tokens, base, layout, components and page refinements.
 
-There is no backend. `database.js` and `db-connection.js` are unused legacy Node files. `config.json` and `api-keys.json` are unused legacy configuration files. The root HTML/CSS/JS files are the original static site and are not imported by the build.
+There is no backend. Unused legacy database and configuration files were removed during cleanup.
 
 ## Security decisions
 
-- Phase 1 removed non-placeholder credential literals from `config.json`, `api-keys.json` and `db-connection.js`. Current files contain empty placeholders or environment references only.
+- Phase 1 removed non-placeholder credential literals from legacy configuration files. Those unused files were deleted during cleanup.
 - `.gitignore` excludes `.env`, `.env.local`, `.env.*`, key/secret/credential file patterns, `node_modules/` and `dist/`, while allowing `.env.example`.
 - No secret values have been printed during inspection or reporting.
 - No Git history was rewritten. The original commit `1ac6cd8503864226c2e4763c432f5c8d1f6241ec` remains HEAD. If previously exposed values were ever genuine, rotate them at the provider.
@@ -23,7 +23,7 @@ There is no backend. `database.js` and `db-connection.js` are unused legacy Node
 
 Before changing identity, all files containing legacy branding were inventoried. The active React app uses HONIESH consistently in title, metadata, site config, header, footer, pages, favicon, asset, package name and documentation.
 
-Legacy branding remains only in the unbuilt root files (`index.html`, `login.html`, `rooz*.html`, `script.js`, the legacy CSS files, `config.json`, `api-keys.json`). The seven approved obsolete Phase 1 files were removed from the repository in Layer 2 after an exact runtime-reference check and backed up outside the repository.
+Legacy branding was removed from the tracked repository during cleanup. All previously identified ROOZ files and unused Phase 1 files were deleted after exact runtime-reference checks and backed up outside the repository.
 
 No company services, products, contact details, certifications or achievements were invented. All unsupported content is marked with `PLACEHOLDER_TEXT` from `src/config/site.js`.
 
@@ -56,6 +56,12 @@ No company services, products, contact details, certifications or achievements w
 - Refined header, footer, buttons, cards, forms, empty states and CTA panels across all existing pages.
 - Verified rendered pages with Chrome DevTools at 1440px, 768px and 390px; no horizontal overflow, correct grid collapse and mobile nav toggle.
 
+## Cleanup completed work
+
+- Removed the legacy ROOZ root pages, sub-brand pages, legacy stylesheets and legacy JavaScript demos after confirming the React app replaced them.
+- Removed unused legacy database and configuration files; the project remains frontend-only.
+- Updated documentation and `.env.example` so no stale legacy file references remain.
+
 ## Migration plan
 
 1. Layer 1: technical and structural foundation — complete.
@@ -84,4 +90,4 @@ No company services, products, contact details, certifications or achievements w
 - Hash routing is adequate for a static site but is not a server-aware router.
 - No data loading exists, so loading states are not implemented; empty, error and notice states are.
 - Login and contact forms only report that their backend flows are not connected.
-- Legacy files still contain old branding but are not part of the active website.
+- Legacy ROOZ files no longer exist in the repository.
