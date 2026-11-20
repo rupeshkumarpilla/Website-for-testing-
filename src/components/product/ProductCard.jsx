@@ -1,5 +1,5 @@
 import { FLAVOUR_BY_ID } from '../../data/flavours.js';
-import { ROUTES, hrefFor } from '../../config/routes.js';
+import { productDetailHref } from '../../config/routes.js';
 import brandMark from '../../assets/brand-mark.svg';
 import ProductVisual from './ProductVisual.jsx';
 
@@ -45,7 +45,7 @@ export default function ProductCard({ product }) {
         <p className="product-card__description">{product.shortDescription}</p>
         <a
           className="button button--secondary product-card__action"
-          href={hrefFor(`${ROUTES.products}/${product.id}`)}
+          href={productDetailHref(product.id)}
         >
           View product
         </a>

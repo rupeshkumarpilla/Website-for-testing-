@@ -8,7 +8,7 @@ import NotFoundPage from './NotFoundPage.jsx';
 import { FLAVOUR_BY_ID } from '../data/flavours.js';
 import { PACKAGING_BY_ID, PACKAGING_IDENTITY } from '../data/packaging.js';
 import { getProductConfiguration, getRelatedProductConfigurations } from '../data/products.js';
-import { ROUTES, hrefFor } from '../config/routes.js';
+import { ROUTES, hrefFor, navigateTo, productDetailPath } from '../config/routes.js';
 
 export default function ProductDetailPage({ productId }) {
   const product = getProductConfiguration(productId);
@@ -24,8 +24,7 @@ export default function ProductDetailPage({ productId }) {
   const showNetContent = product.netContent.label !== quantity;
 
   const selectVariant = (id) => {
-    const nextHash = hrefFor(`${ROUTES.products}/${id}`);
-    if (window.location.hash !== nextHash) window.location.hash = nextHash;
+    navigateTo(productDetailPath(id));
   };
 
   return (

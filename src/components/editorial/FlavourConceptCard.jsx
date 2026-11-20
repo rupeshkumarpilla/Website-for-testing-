@@ -7,7 +7,6 @@ export default function FlavourConceptCard({ flavourId }) {
   if (!flavour) return null;
 
   const configurations = PRODUCT_CONFIGURATIONS.filter((product) => product.flavourId === flavour.id);
-  const firstProduct = configurations[0];
 
   return (
     <article
@@ -21,11 +20,9 @@ export default function FlavourConceptCard({ flavourId }) {
       <h3 className="flavour-concept-card__title">{flavour.name}</h3>
       <p className="flavour-concept-card__description">{flavour.description}</p>
       <p className="flavour-concept-card__note">Formulation pending confirmation.</p>
-      {firstProduct && (
-        <a className="flavour-concept-card__link" href={hrefFor(`${ROUTES.products}/${firstProduct.id}`)}>
-          View concept <span aria-hidden="true">→</span>
-        </a>
-      )}
+      <a className="flavour-concept-card__link" href={hrefFor(`${ROUTES.flavours}/${flavour.slug}`)}>
+        View concept <span aria-hidden="true">→</span>
+      </a>
     </article>
   );
 }

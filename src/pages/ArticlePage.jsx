@@ -11,7 +11,7 @@ import {
   getRelatedArticles,
   getRelatedProductsForArticle,
 } from '../data/editorial.js';
-import { ROUTES, hrefFor } from '../config/routes.js';
+import { ROUTES, hrefFor, legacyHref } from '../config/routes.js';
 
 export default function ArticlePage({ articleSlug }) {
   const article = JOURNAL_ARTICLE_BY_SLUG[articleSlug];
@@ -68,15 +68,16 @@ export default function ArticlePage({ articleSlug }) {
       <Section eyebrow="Sources" title="Reference links" tinted>
         <ul className="source-list">
           {article.sources.map((source) => {
-            const isHash = source.url.startsWith('#');
+            const sourceHref = legacyHref(source.url);
+            const opensExternal = /^https?:\/\//.test(sourceHref);
             return (
               <li key={source.url}>
                 <a
-                  href={source.url}
-                  {...(!isHash ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  href={sourceHref}
+                  {...(opensExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
                 >
                   {source.label}
-                  {!isHash && <span aria-hidden="true"> ↗</span>}
+                  {opensExternal && <span aria-hidden="true"> ↗</span>}
                 </a>
               </li>
             );

@@ -6,93 +6,45 @@ import ProductDetailPage from './pages/ProductDetailPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import JournalPage from './pages/JournalPage.jsx';
 import ArticlePage from './pages/ArticlePage.jsx';
+import FlavourPage from './pages/FlavourPage.jsx';
+import PackagingPage from './pages/PackagingPage.jsx';
 import UseCasesPage from './pages/UseCasesPage.jsx';
 import CaseStudiesPage from './pages/CaseStudiesPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
-import { PAGE_TITLES, ROUTES } from './config/routes.js';
-import { SITE } from './config/site.js';
-import { PACKAGING_BY_SLUG } from './data/packaging.js';
-import { JOURNAL_ARTICLE_BY_SLUG } from './data/editorial.js';
-import { getProductConfiguration } from './data/products.js';
-import { useHashRoute } from './utils/useHashRoute.js';
+import { useAppRoute } from './utils/useAppRoute.js';
 
 const PAGES = {
-  [ROUTES.home]: HomePage,
-  [ROUTES.products]: ProductsPage,
-  [ROUTES.about]: AboutPage,
-  [ROUTES.journal]: JournalPage,
-  [ROUTES.useCases]: UseCasesPage,
-  [ROUTES.caseStudies]: CaseStudiesPage,
-  [ROUTES.contact]: ContactPage,
-  [ROUTES.login]: LoginPage,
+  home: HomePage,
+  products: ProductsPage,
+  'product-detail': ProductDetailPage,
+  about: AboutPage,
+  packaging: PackagingPage,
+  flavour: FlavourPage,
+  journal: JournalPage,
+  article: ArticlePage,
+  'use-cases': UseCasesPage,
+  'case-studies': CaseStudiesPage,
+  contact: ContactPage,
+  login: LoginPage,
+  'not-found': NotFoundPage,
 };
 
-function resolveRoute(path) {
-  const DirectPage = PAGES[path];
-  if (DirectPage) {
-    return {
-      Page: DirectPage,
-      pageProps: {},
-      title: PAGE_TITLES[path] || 'Page not found',
-    };
-  }
-
-  if (path.startsWith(`${ROUTES.journal}/`)) {
-    const segment = path.slice(ROUTES.journal.length + 1);
-    const article = JOURNAL_ARTICLE_BY_SLUG[segment];
-
-    if (article) {
-      return {
-        Page: ArticlePage,
-        pageProps: { articleSlug: segment },
-        title: article.title,
-      };
-    }
-  }
-
-  if (path.startsWith(`${ROUTES.products}/`)) {
-    const segment = path.slice(ROUTES.products.length + 1);
-    const product = getProductConfiguration(segment);
-
-    if (product) {
-      return {
-        Page: ProductDetailPage,
-        pageProps: { productId: segment },
-        title: product.displayName,
-      };
-    }
-
-    const family = PACKAGING_BY_SLUG[segment];
-    if (family) {
-      return {
-        Page: ProductsPage,
-        pageProps: { packagingId: family.id },
-        title: family.name,
-      };
-    }
-  }
-
-  return {
-    Page: NotFoundPage,
-    pageProps: {},
-    title: PAGE_TITLES[ROUTES.notFound] || 'Page not found',
-  };
-}
-
-export default function App() {
-  const path = useHashRoute();
-  const { Page, pageProps, title } = resolveRoute(path);
+export default function App({ initialRoute }) {
+  const route = useAppRoute(initialRoute);
+  const Page = PAGES[route.component] ?? NotFoundPage;
 
   useEffect(() => {
-    document.title = `${title} | ${SITE.name}`;
+    document.title = route.documentTitle;
+    const root = document.getElementById('root');
+    if (root) root.dataset.routeId = route.id;
     window.scrollTo(0, 0);
-  }, [path, title]);
+  }, [route.id, route.path, route.documentTitle]);
 
   return (
-    <SiteLayout path={path}>
-      <Page {...pageProps} />
+    <SiteLayout path={route.path}>
+      <Page {...route.props} />
     </SiteLayout>
   );
 }

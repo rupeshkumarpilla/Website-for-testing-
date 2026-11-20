@@ -10,7 +10,7 @@ import ProductVisual from '../components/product/ProductVisual.jsx';
 import { FLAVOURS } from '../data/flavours.js';
 import { PACKAGING_FAMILIES } from '../data/packaging.js';
 import { CATALOGUE_SUMMARY, PRODUCT_CONFIGURATIONS, getCatalogueFilters } from '../data/products.js';
-import { ROUTES, hrefFor } from '../config/routes.js';
+import { ROUTES, hrefFor, navigateTo } from '../config/routes.js';
 
 export default function ProductsPage({ packagingId = null }) {
   const options = useMemo(() => getCatalogueFilters(), []);
@@ -32,10 +32,10 @@ export default function ProductsPage({ packagingId = null }) {
   }), [flavour, packaging, size]);
 
   const setCategoryUrl = (nextPackaging) => {
-    const nextHash = nextPackaging === 'all'
-      ? hrefFor(ROUTES.products)
-      : hrefFor(`${ROUTES.products}/${nextPackaging}`);
-    if (window.location.hash !== nextHash) window.location.hash = nextHash;
+    const nextPath = nextPackaging === 'all'
+      ? ROUTES.products
+      : `${ROUTES.products}/${nextPackaging}`;
+    navigateTo(nextPath);
   };
 
   const handleChange = (name, value) => {
