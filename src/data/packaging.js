@@ -3,6 +3,11 @@ export const PACKAGING_STATUS = Object.freeze({
   conceptVisualPendingPhotography: 'concept-visual-pending-photography',
 });
 
+export const PACKAGING_IDENTITY = Object.freeze({
+  batchCertification: 'Every product box includes a batch certification sticker. Certification authorities, standards and test results are not published here.',
+  finalPackagingNotice: 'Packaging artwork shown on this website is a concept presentation, not final manufactured packaging.',
+});
+
 export const PACKAGING_FAMILIES = Object.freeze([
   {
     id: 'glass-jars',
@@ -118,4 +123,6 @@ export const PACKAGING_SUMMARY = Object.freeze({
   portionPackWeightGrams: PACKAGING_BY_ID['portion-packs'].unitWeightGrams,
   portionPackNetContentGrams: PACKAGING_BY_ID['portion-packs'].netContent.value,
   volumeRule: 'The 1 litre glass jar is a volume specification and must not be described as 1 kg.',
+  batchCertification: PACKAGING_IDENTITY.batchCertification,
+  finalPackagingNotice: PACKAGING_IDENTITY.finalPackagingNotice,
 });

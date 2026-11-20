@@ -3,13 +3,13 @@ import Section from '../components/layout/Section.jsx';
 import Button from '../components/ui/Button.jsx';
 import EditorialVisual from '../components/editorial/EditorialVisual.jsx';
 import EditorialDisclosure from '../components/editorial/EditorialDisclosure.jsx';
+import { BRAND_IDENTITY } from '../config/content.js';
 import { CONTENT_GAPS } from '../config/informationArchitecture.js';
 import { CATALOGUE_SUMMARY } from '../data/products.js';
 import { FLAVOURS } from '../data/flavours.js';
-import { PACKAGING_FAMILIES } from '../data/packaging.js';
+import { PACKAGING_FAMILIES, PACKAGING_IDENTITY } from '../data/packaging.js';
 import { ROUTES, hrefFor } from '../config/routes.js';
 
-const COMPANY_GAP = CONTENT_GAPS.find((gap) => gap.id === 'company-story');
 const PRODUCT_GAP = CONTENT_GAPS.find((gap) => gap.id === 'product-imagery');
 const FORMULATION_GAP = CONTENT_GAPS.find((gap) => gap.id === 'formulation-details');
 
@@ -18,8 +18,8 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="Our Story"
-        title="The HONIESH story, without invented history."
-        description="This page explains what HONIESH can substantiate today: a structured collection of five flavour concepts and three packaging families. The narrative sections are intentionally marked as pending until you supply approved company information."
+        title={BRAND_IDENTITY.tagline}
+        description={`${BRAND_IDENTITY.brandEssence} This page uses the approved HONIESH identity and avoids invented brand history.`}
         visual={<EditorialVisual visualId="honeycomb" label="Our Story editorial cover" large />}
       >
         <div className="page-header__actions">
@@ -30,8 +30,8 @@ export default function AboutPage() {
       <Section
         id="brand-identity"
         eyebrow="01 / Brand identity"
-        title="What HONIESH is today"
-        description="A honey brand concept presented through a clear catalogue, careful language and transparent editorial notes."
+        title="A contemporary honey brand"
+        description={BRAND_IDENTITY.positioning}
         variant="split"
       >
         <div className="story-facts">
@@ -51,53 +51,60 @@ export default function AboutPage() {
       </Section>
 
       <Section
-        id="brand-origins"
-        eyebrow="02 / Brand origins"
-        title="Where the story began"
-        description="Placeholder for the approved origin story."
+        id="mission"
+        eyebrow="02 / Mission"
+        title="Why HONIESH exists"
+        description={BRAND_IDENTITY.mission}
         variant="split"
         tinted
-      >
-        <EditorialDisclosure title="Information required from HONIESH">
-          <p>Brand origins: when and why the brand was created.</p>
-          <p>Founder story: who founded HONIESH and the approved wording to use.</p>
-          <p>Approved company background: any history that may be published.</p>
-        </EditorialDisclosure>
-      </Section>
+      />
 
       <Section
-        id="mission"
-        eyebrow="03 / Mission"
-        title="Why HONIESH exists"
-        description="Placeholder for an approved mission statement."
+        id="vision"
+        eyebrow="03 / Vision"
+        title="Where HONIESH is going"
+        description={BRAND_IDENTITY.vision}
         variant="split"
-      >
-        <EditorialDisclosure title="Information required from HONIESH">
-          <p>An approved one-paragraph mission statement.</p>
-          <p>Any public-purpose language that has been reviewed and confirmed.</p>
-        </EditorialDisclosure>
-      </Section>
+      />
 
       <Section
         id="values"
         eyebrow="04 / Values"
         title="What HONIESH stands for"
-        description="Placeholder for approved values."
+        description="The approved values shape how the collection and its communication are presented."
         variant="split"
         tinted
       >
-        <EditorialDisclosure title="Information required from HONIESH">
-          <p>Three to five approved brand values with short explanations.</p>
-          <p>Any claims about sourcing, production or service that can be evidenced.</p>
-        </EditorialDisclosure>
+        <div className="pending-list">
+          <div className="pending-list__group">
+            <h3>Approved values</h3>
+            <ul>{BRAND_IDENTITY.values.map((value) => <li key={value}>{value}</li>)}</ul>
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        id="personality"
+        eyebrow="05 / Personality"
+        title="How HONIESH should feel"
+        description="A clear, warm and modern character expressed through restrained, considered communication."
+        variant="split"
+      >
+        <div className="pending-list">
+          <div className="pending-list__group">
+            <h3>Brand personality</h3>
+            <ul>{BRAND_IDENTITY.personality.map((trait) => <li key={trait}>{trait}</li>)}</ul>
+          </div>
+        </div>
       </Section>
 
       <Section
         id="product-philosophy"
-        eyebrow="05 / Product philosophy"
+        eyebrow="06 / Product philosophy"
         title="How we think about the collection"
-        description="A confirmed structural philosophy based on the product information already available."
+        description="Confirmed specifications, careful format language and transparent editorial notes."
         variant="split"
+        tinted
       >
         <div className="story-columns">
           <div>
@@ -110,40 +117,33 @@ export default function AboutPage() {
           <div>
             <h3>Format as a choice</h3>
             <p>
-              Glass jars, honey sticks and portion packs are presented as distinct formats with different
+              Glass jars, honey sticks and hygienic portion packs are presented as distinct formats with different
               convenience contexts, not as ranked claims about safety or quality.
             </p>
           </div>
           <div>
-            <h3>Reviewable language</h3>
+            <h3>Considered presentation</h3>
             <p>
-              Journal articles cite general references while avoiding medical, nutrition and unverified product claims.
-              Product-specific wording can be added after review.
+              {PACKAGING_IDENTITY.batchCertification} {PACKAGING_IDENTITY.finalPackagingNotice}
             </p>
           </div>
         </div>
       </Section>
 
       <Section
-        id="future-vision"
-        eyebrow="06 / Future vision"
-        title="Where HONIESH goes next"
-        description="Placeholder for approved future-vision language."
-        variant="split"
-        tinted
+        id="story-boundaries"
+        eyebrow="07 / Story boundaries"
+        title="Honest storytelling, not invented history"
+        description="Brand narrative is based on approved identity and product information."
       >
-        <EditorialDisclosure title="Information required from HONIESH">
-          <p>Approved short-term and long-term brand direction.</p>
-          <p>Any expansion plans, channels or partnerships that may be publicly stated.</p>
+        <EditorialDisclosure title="What this page will not claim">
+          <p>Founder identity, founding date, brand history and sourcing locations are not published without approved evidence.</p>
+          <p>No medical, nutrition, certification or test-result claim is added without review and substantiation.</p>
         </EditorialDisclosure>
       </Section>
 
-      <Section id="content-required" eyebrow="07 / Content still required" title="What I need from you">
+      <Section id="content-required" eyebrow="08 / Still unpublished" title="What remains pending" tinted>
         <div className="pending-list">
-          <div className="pending-list__group">
-            <h3>Company story</h3>
-            <ul>{(COMPANY_GAP?.items ?? []).map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
           <div className="pending-list__group">
             <h3>Product imagery</h3>
             <ul>{(PRODUCT_GAP?.items ?? []).map((item) => <li key={item}>{item}</li>)}</ul>
@@ -161,7 +161,7 @@ export default function AboutPage() {
             <p className="cta-panel__eyebrow">Next step</p>
             <h3 className="cta-panel__title">See the collection and context</h3>
             <p className="cta-panel__description">
-              The catalogue and journal remain useful while the company narrative is completed.
+              The catalogue and journal remain useful while final imagery and formulation details are confirmed.
             </p>
           </div>
           <div className="cta-panel__actions">

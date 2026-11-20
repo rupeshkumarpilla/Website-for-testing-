@@ -7,8 +7,9 @@ import PackagingFamilyCard from '../components/editorial/PackagingFamilyCard.jsx
 import ArticleCard from '../components/editorial/ArticleCard.jsx';
 import UseCaseCard from '../components/editorial/UseCaseCard.jsx';
 import CaseStudyCard from '../components/editorial/CaseStudyCard.jsx';
+import { BRAND_IDENTITY } from '../config/content.js';
 import { FLAVOURS } from '../data/flavours.js';
-import { PACKAGING_FAMILIES } from '../data/packaging.js';
+import { PACKAGING_FAMILIES, PACKAGING_IDENTITY } from '../data/packaging.js';
 import { CATALOGUE_SUMMARY } from '../data/products.js';
 import { JOURNAL_ARTICLES, USE_CASES, CASE_STUDIES } from '../data/editorial.js';
 import { ROUTES, hrefFor } from '../config/routes.js';
@@ -21,9 +22,9 @@ export default function HomePage() {
   return (
     <>
       <PageHeader
-        eyebrow="HONIESH · Honey, considered"
-        title="Clarity in every concept."
-        description="HONIESH brings five flavour concepts and three packaging families into one clear collection. This website separates confirmed specifications from the details still awaiting approval, so every page is useful without overstating what is known."
+        eyebrow={`HONIESH · ${BRAND_IDENTITY.brandEssence}`}
+        title={BRAND_IDENTITY.tagline}
+        description={`${BRAND_IDENTITY.positioning} ${BRAND_IDENTITY.mission} Confirmed specifications stay visible while formulation, final imagery and genuine case-study evidence are clearly marked as pending.`}
         visual={<EditorialVisual visualId="honeycomb" label="HONIESH brand introduction" large />}
       >
         <div className="page-header__actions">
@@ -36,7 +37,7 @@ export default function HomePage() {
         id="brand-statement"
         eyebrow="01 / Brand point of view"
         title="A honey brand built around clear choices"
-        description="The collection is organised around flavour, format and use context. Confirmed quantities stay visible; formulation, photography and company-history details are marked as pending rather than invented."
+        description={`${BRAND_IDENTITY.mission} The collection is organised around flavour, format and use context, with approved identity language and no invented company history.`}
         variant="split"
       >
         <div className="statement-grid">
@@ -62,7 +63,7 @@ export default function HomePage() {
         id="flavours"
         eyebrow="02 / Five flavour concepts"
         title="A considered range of flavour ideas"
-        description="These names introduce concept directions only. No ingredient, nutrition, origin or flavour-performance claim is made before review."
+        description="Original, Ginger, Lemon, Cinnamon and Cardamom introduce concept directions only. No ingredient, nutrition, origin or flavour-performance claim is made before review."
         tinted
       >
         <div className="editorial-card-grid editorial-card-grid--flavours">
@@ -76,7 +77,7 @@ export default function HomePage() {
         id="formats"
         eyebrow="03 / Packaging families"
         title="Three formats for different contexts"
-        description="Compare the confirmed structure of each family: jar sizes, individual sticks and portion-controlled boxes."
+        description={`Compare the confirmed structure of each family: jar sizes, individual sticks and portion-controlled boxes. ${PACKAGING_IDENTITY.batchCertification}`}
       >
         <div className="editorial-card-grid editorial-card-grid--formats">
           {PACKAGING_FAMILIES.map((family) => (
@@ -88,8 +89,8 @@ export default function HomePage() {
       <Section
         id="story"
         eyebrow="04 / Our story"
-        title="What we can say today — and what comes next"
-        description="The HONIESH story page presents an honest brand position while clearly listing the company details still required from you."
+        title="Approved identity, honest boundaries"
+        description="The HONIESH story page presents the approved brand position while clearly separating confirmed identity from evidence still pending."
         variant="split"
         tinted
       >
@@ -97,8 +98,9 @@ export default function HomePage() {
           <EditorialVisual visualId="texture" label="HONIESH story preview" />
           <div className="story-preview__content">
             <p>
-              Confirmed today: five flavour concepts, three packaging families and a catalogue structure built around clarity.
-              Still required: brand origins, founder story, mission, values, product philosophy and future vision.
+              Confirmed today: tagline, brand essence, mission, vision, values, personality, five flavour concepts and
+              three packaging families. Still pending: final imagery, confirmed formulations, genuine customer case
+              studies and a live contact destination.
             </p>
             <Button href={hrefFor(ROUTES.about)} variant="secondary">See the full story page</Button>
           </div>
@@ -142,7 +144,7 @@ export default function HomePage() {
         id="case-studies"
         eyebrow="07 / Case studies"
         title="Frameworks ready for real evidence"
-        description="These are transparent illustration frameworks, not customer stories. They show how verified results can be added later."
+        description="These are transparent illustration frameworks, not customer stories. They show how genuine case studies can be added later."
       >
         <div className="editorial-card-grid editorial-card-grid--case-studies">
           {featuredCaseStudies.map((caseStudy) => (

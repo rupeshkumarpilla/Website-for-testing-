@@ -1,4 +1,4 @@
-import { PACKAGING_FAMILIES } from '../../data/packaging.js';
+import { PACKAGING_FAMILIES, PACKAGING_SUMMARY } from '../../data/packaging.js';
 
 export default function ProductComparison() {
   const columns = PACKAGING_FAMILIES.map((family) => ({
@@ -57,6 +57,7 @@ export default function ProductComparison() {
       </div>
       <p className="comparison__note">
         The 1 litre glass jar is a volume specification. It is not described here as 1 kg.
+        {' '}{PACKAGING_SUMMARY.batchCertification}
       </p>
     </div>
   );

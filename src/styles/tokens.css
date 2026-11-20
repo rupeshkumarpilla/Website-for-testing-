@@ -1,20 +1,21 @@
 :root {
   color-scheme: light;
 
-  --color-ink: #16150f;
-  --color-ink-soft: #4d493f;
+  --color-ink: #211f1a;
+  --color-ink-soft: #5d6251;
   --color-ink-muted: #7c7567;
-  --color-page: #f7f4ed;
-  --color-surface: #fffdf8;
-  --color-surface-alt: #efe9dc;
-  --color-surface-deep: #1d1b16;
+  --color-page: #f2ebdd;
+  --color-surface: #f9f7f0;
+  --color-surface-alt: #f2ebdd;
+  --color-surface-deep: #211f1a;
   --color-surface-deep-soft: #2a2720;
-  --color-on-deep: #f8f5ee;
+  --color-on-deep: #f9f7f0;
   --color-border: #ddd5c5;
   --color-border-soft: #eae4d8;
-  --color-brass: #9a773f;
-  --color-brass-bright: #d7b878;
+  --color-brass: #b3935c;
+  --color-brass-bright: #d2a04a;
   --color-brass-soft: #f1e8d5;
+  --color-botanical: #5d6251;
   --color-focus: #2f6fdb;
   --color-error: #a4262c;
   --color-error-soft: #f9eceb;

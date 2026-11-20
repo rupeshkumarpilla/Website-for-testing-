@@ -6,7 +6,7 @@ import ProductCard from '../components/product/ProductCard.jsx';
 import ProductVariantSelector from '../components/product/ProductVariantSelector.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 import { FLAVOUR_BY_ID } from '../data/flavours.js';
-import { PACKAGING_BY_ID } from '../data/packaging.js';
+import { PACKAGING_BY_ID, PACKAGING_IDENTITY } from '../data/packaging.js';
 import { getProductConfiguration, getRelatedProductConfigurations } from '../data/products.js';
 import { ROUTES, hrefFor } from '../config/routes.js';
 
@@ -90,6 +90,7 @@ export default function ProductDetailPage({ productId }) {
             <div className="product-detail__status">
               <p><strong>Concept status:</strong> {product.visualDisclosure}</p>
               <p><strong>Formulation:</strong> {product.formulationNotice}</p>
+              <p><strong>Batch certification:</strong> {PACKAGING_IDENTITY.batchCertification}</p>
             </div>
 
             <div className="product-detail__variants">
