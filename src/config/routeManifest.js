@@ -1,8 +1,9 @@
 import { FLAVOURS } from '../data/flavours.js';
 import { PACKAGING_FAMILIES, PACKAGING_BY_SLUG } from '../data/packaging.js';
-import { JOURNAL_ARTICLES } from '../data/editorial.js';
-import { getProductConfiguration } from '../data/products.js';
+import { EDITORIAL_SUMMARY, JOURNAL_ARTICLES } from '../data/editorial.js';
+import { CATALOGUE_SUMMARY, getProductConfiguration } from '../data/products.js';
 import { SITE } from './site.js';
+import { BRAND_IDENTITY, COMPANY_CONTENT } from './content.js';
 import { hrefFor, normalizeSitePathname } from './basePath.js';
 
 export const ROUTES = Object.freeze({
@@ -33,8 +34,22 @@ function makeRoute(config) {
     ...config,
     props: Object.freeze(config.props ?? {}),
     documentTitle: config.documentTitle ?? makeDocumentTitle(config.title, config.id === 'home'),
+    seoDescription: config.seoDescription ?? SITE.description,
   });
 }
+
+const STATIC_SEO_DESCRIPTIONS = Object.freeze({
+  home: BRAND_IDENTITY.positioning,
+  products: `Explore ${CATALOGUE_SUMMARY.totalConfigurations} flavour and packaging configurations across glass jars, honey sticks and portion packs.`,
+  about: COMPANY_CONTENT.about,
+  packaging: 'Compare the confirmed HONIESH packaging families. Visuals are concept presentations while final packaging photography is pending.',
+  journal: 'A growing set of short articles about honey characteristics, storage questions, packaging formats and everyday use.',
+  'use-cases': `${EDITORIAL_SUMMARY.useCaseCount} proposed application areas for HONIESH formats. Each one is framed as a use context to discuss, not as a confirmed customer, partnership or placement.`,
+  'case-studies': `No customer case studies are claimed. This page presents ${EDITORIAL_SUMMARY.caseStudyCount} illustrative frameworks showing how verified client contexts, permissions and outcomes can be added later.`,
+  contact: 'Choose an enquiry path, review the product information you need, and use the form below. No submission is claimed until a real form provider or contact destination is connected.',
+  login: 'Account access is a placeholder in this frontend-only build.',
+  'not-found': 'The page you requested does not exist.',
+});
 
 const STATIC_ROUTES = Object.freeze([
   makeRoute({
@@ -43,6 +58,8 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Home',
     component: 'home',
     kind: 'static',
+    documentTitle: `${SITE.name} — ${BRAND_IDENTITY.tagline}`,
+    seoDescription: STATIC_SEO_DESCRIPTIONS.home,
   }),
   makeRoute({
     id: 'products',
@@ -50,6 +67,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Our Honey',
     component: 'products',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS.products,
   }),
   makeRoute({
     id: 'about',
@@ -57,6 +75,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Our Story',
     component: 'about',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS.about,
   }),
   makeRoute({
     id: 'packaging',
@@ -64,6 +83,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Our Packaging',
     component: 'packaging',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS.packaging,
   }),
   makeRoute({
     id: 'journal',
@@ -71,6 +91,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Honey Journal',
     component: 'journal',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS.journal,
   }),
   makeRoute({
     id: 'use-cases',
@@ -78,6 +99,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Use Cases',
     component: 'use-cases',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS['use-cases'],
   }),
   makeRoute({
     id: 'case-studies',
@@ -85,6 +107,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Case Studies',
     component: 'case-studies',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS['case-studies'],
   }),
   makeRoute({
     id: 'contact',
@@ -92,6 +115,7 @@ const STATIC_ROUTES = Object.freeze([
     title: 'Contact',
     component: 'contact',
     kind: 'static',
+    seoDescription: STATIC_SEO_DESCRIPTIONS.contact,
   }),
   makeRoute({
     id: 'login',
@@ -100,6 +124,7 @@ const STATIC_ROUTES = Object.freeze([
     component: 'login',
     kind: 'application',
     public: false,
+    seoDescription: STATIC_SEO_DESCRIPTIONS.login,
   }),
 ]);
 
@@ -110,6 +135,7 @@ const PACKAGING_ROUTES = Object.freeze(
     title: family.name,
     component: 'products',
     kind: 'product-family',
+    seoDescription: family.intendedConvenience,
     props: { packagingId: family.id },
   })),
 );
@@ -121,6 +147,7 @@ const FLAVOUR_ROUTES = Object.freeze(
     title: `${flavour.name} Honey Concept`,
     component: 'flavour',
     kind: 'flavour',
+    seoDescription: flavour.description,
     props: { flavourSlug: flavour.slug },
   })),
 );
@@ -132,6 +159,7 @@ const ARTICLE_ROUTES = Object.freeze(
     title: article.title,
     component: 'article',
     kind: 'article',
+    seoDescription: article.summary,
     props: { articleSlug: article.slug },
   })),
 );
@@ -144,6 +172,7 @@ const NOT_FOUND_ROUTE = makeRoute({
   kind: 'fallback',
   public: false,
   prerender: false,
+  seoDescription: STATIC_SEO_DESCRIPTIONS['not-found'],
 });
 
 const PRODUCT_DETAIL_ROUTE = makeRoute({

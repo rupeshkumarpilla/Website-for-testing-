@@ -14,6 +14,7 @@ import ContactPage from './pages/ContactPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import { useAppRoute } from './utils/useAppRoute.js';
+import { useDocumentMetadata } from './utils/useDocumentMetadata.js';
 
 const PAGES = {
   home: HomePage,
@@ -33,6 +34,7 @@ const PAGES = {
 
 export default function App({ initialRoute }) {
   const route = useAppRoute(initialRoute);
+  useDocumentMetadata(route);
   const Page = PAGES[route.component] ?? NotFoundPage;
 
   useEffect(() => {
