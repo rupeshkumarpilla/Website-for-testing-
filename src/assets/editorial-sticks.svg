@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract honey stick editorial cover">
+  <rect width="800" height="500" fill="#efe9dc"/>
+  <g transform="rotate(-18 400 250)">
+    <rect x="180" y="205" width="440" height="90" rx="45" fill="#1d1b16"/>
+    <rect x="215" y="220" width="370" height="60" rx="30" fill="#d7b878"/>
+    <path d="M585 220l55 30-55 30z" fill="#9a773f"/>
+    <text x="400" y="257" text-anchor="middle" fill="#1d1b16" font-family="Arial, sans-serif" font-size="18" letter-spacing="7">HONIESH STICK</text>
+  </g>
+  <g fill="none" stroke="#9a773f" stroke-width="3" opacity="0.45">
+    <circle cx="160" cy="120" r="36"/>
+    <circle cx="650" cy="380" r="46"/>
+  </g>
+  <text x="64" y="452" fill="#4d493f" font-family="Georgia, serif" font-size="28" letter-spacing="8">SINGLE SERVE</text>
+</svg>

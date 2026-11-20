@@ -20,6 +20,21 @@ export const PRODUCT_VISUALS = Object.freeze({
   }),
 });
 
-export function getProductVisual(packagingId) {
-  return PRODUCT_VISUALS[packagingId] ?? PRODUCT_VISUALS['glass-jars'];
+export function getProductVisual(packagingId, product = null) {
+  const visual = PRODUCT_VISUALS[packagingId] ?? PRODUCT_VISUALS['glass-jars'];
+
+  if (!product) return visual;
+
+  return Object.freeze({
+    ...visual,
+    alt: `${product.displayName}: ${visual.alt}`,
+    caption: `${product.displayName} — ${visual.caption}`,
+  });
+}
+
+export function getProductVariantBadge(product) {
+  if (!product) return null;
+  if (product.sizeLabel) return product.sizeLabel;
+  if (product.unitCount && product.unitWeightGrams) return `${product.unitCount} × ${product.unitWeightGrams} g`;
+  return product.format;
 }

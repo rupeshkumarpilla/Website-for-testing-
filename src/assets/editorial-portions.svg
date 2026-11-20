@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract individual honey portion editorial cover">
+  <rect width="800" height="500" fill="#2a2720"/>
+  <g transform="translate(250 110)">
+    <path d="M0 70L150 0l150 70-150 70z" fill="#d7b878"/>
+    <path d="M0 70v180l150 75V140z" fill="#9a773f"/>
+    <path d="M150 140l150-70v180l-150 75z" fill="#efe9dc"/>
+    <path d="M150 140v185" stroke="#fffdf8" stroke-width="4" opacity="0.7"/>
+  </g>
+  <g fill="#f8f5ee" opacity="0.55">
+    <circle cx="145" cy="390" r="8"/>
+    <circle cx="680" cy="120" r="6"/>
+    <circle cx="690" cy="390" r="10"/>
+  </g>
+  <text x="64" y="452" fill="#f8f5ee" font-family="Georgia, serif" font-size="28" letter-spacing="8">INDIVIDUAL PORTIONS</text>
+</svg>

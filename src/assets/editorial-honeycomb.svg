@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract honeycomb and honey drop editorial cover">
+  <rect width="800" height="500" fill="#1d1b16"/>
+  <g fill="none" stroke="#d7b878" stroke-width="2" opacity="0.45">
+    <path d="M150 120l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M270 120l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M390 120l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M210 235l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M330 235l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M450 235l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M150 350l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M270 350l60-35 60 35v70l-60 35-60-35z"/>
+    <path d="M390 350l60-35 60 35v70l-60 35-60-35z"/>
+  </g>
+  <path d="M630 120c0 55-58 95-58 145 0 35 26 61 58 61s58-26 58-61c0-50-58-90-58-145z" fill="#d7b878"/>
+  <circle cx="610" cy="260" r="12" fill="#fff8e9" opacity="0.8"/>
+  <text x="64" y="452" fill="#f8f5ee" font-family="Georgia, serif" font-size="28" letter-spacing="8">HONEY JOURNAL</text>
+</svg>

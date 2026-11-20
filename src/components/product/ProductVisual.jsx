@@ -1,7 +1,8 @@
-import { getProductVisual } from '../../data/productVisuals.js';
+import { getProductVariantBadge, getProductVisual } from '../../data/productVisuals.js';
 
-export default function ProductVisual({ packagingId, label, large = false, className = '' }) {
-  const visual = getProductVisual(packagingId);
+export default function ProductVisual({ packagingId, product = null, label, large = false, className = '' }) {
+  const visual = getProductVisual(packagingId, product);
+  const variantBadge = getProductVariantBadge(product);
   const classes = ['product-visual'];
 
   if (large) classes.push('product-visual--large');
@@ -19,6 +20,7 @@ export default function ProductVisual({ packagingId, label, large = false, class
           loading={large ? 'eager' : 'lazy'}
         />
         <span className="product-visual__badge">Concept illustration</span>
+        {variantBadge && <span className="product-visual__variant">{variantBadge}</span>}
       </div>
       <figcaption className="product-visual__caption">{visual.caption}</figcaption>
     </figure>

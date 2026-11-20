@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract kitchen table editorial cover">
+  <rect width="800" height="500" fill="#f7f4ed"/>
+  <circle cx="400" cy="230" r="175" fill="#e7dcc7"/>
+  <circle cx="400" cy="230" r="132" fill="#fffdf8"/>
+  <path d="M330 168c0 38-46 64-46 106 0 28 21 49 46 49s46-21 46-49c0-42-46-68-46-106z" fill="#d7b878"/>
+  <path d="M470 180c55 10 88 47 88 96 0 40-33 72-74 72" fill="none" stroke="#9a773f" stroke-width="16" stroke-linecap="round"/>
+  <g stroke="#9a773f" stroke-width="4" stroke-linecap="round" opacity="0.6">
+    <path d="M190 365h120"/>
+    <path d="M520 365h100"/>
+    <path d="M250 95l20 28"/>
+    <path d="M570 110l-18 30"/>
+  </g>
+  <text x="64" y="452" fill="#4d493f" font-family="Georgia, serif" font-size="28" letter-spacing="8">EVERYDAY KITCHEN</text>
+</svg>

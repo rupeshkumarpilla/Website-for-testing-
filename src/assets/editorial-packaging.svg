@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract packaging lineup editorial cover">
+  <rect width="800" height="500" fill="#1d1b16"/>
+  <g transform="translate(105 120)">
+    <path d="M60 60h120l-14 220H74z" fill="#d7b878"/>
+    <path d="M82 28h76v34H82z" fill="#fffdf8"/>
+    <rect x="92" y="130" width="56" height="58" rx="4" fill="#fffdf8" opacity="0.9"/>
+  </g>
+  <g transform="translate(320 150)">
+    <rect x="0" y="0" width="120" height="200" rx="16" fill="#efe9dc"/>
+    <rect x="28" y="30" width="64" height="140" rx="8" fill="#9a773f"/>
+    <path d="M60 170V56" stroke="#fffdf8" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(525 175)">
+    <path d="M0 45L110 0l70 55-70 45z" fill="#d7b878"/>
+    <path d="M0 45v120l110 55V100z" fill="#9a773f"/>
+    <path d="M110 100l70-45v120l-70 45z" fill="#efe9dc"/>
+  </g>
+  <text x="64" y="452" fill="#f8f5ee" font-family="Georgia, serif" font-size="28" letter-spacing="8">FORMAT GUIDE</text>
+</svg>

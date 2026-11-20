@@ -6,25 +6,26 @@ import ProductVisual from './ProductVisual.jsx';
 export default function ProductCard({ product }) {
   const flavour = FLAVOUR_BY_ID[product.flavourId];
   const quantity = product.sizeId
-    ? `Size · ${product.sizeLabel}`
+    ? product.sizeLabel
     : `${product.unitCount} × ${product.unitWeightGrams} g`;
+  const showNetContent = product.netContent.label !== quantity;
   const style = {
     '--product-accent': flavour.accentColor,
     '--product-accent-soft': flavour.accentSoft,
   };
 
   return (
-    <article className="product-card" style={style}>
+    <article className="product-card" data-configuration-key={product.configurationKey} style={style}>
       <div className="product-card__visual">
-        <ProductVisual packagingId={product.packagingId} label={product.displayName} />
+        <ProductVisual packagingId={product.packagingId} product={product} label={product.displayName} />
       </div>
       <div className="product-card__body">
         <div className="product-card__brand">
           <img src={brandMark} alt="" aria-hidden="true" />
           <span>HONIESH</span>
         </div>
-        <p className="product-card__flavour">{flavour.name}</p>
-        <h3 className="product-card__title">{product.packagingName}</h3>
+        <p className="product-card__flavour">Flavour concept · {flavour.name}</p>
+        <h3 className="product-card__title">{product.displayName}</h3>
         <dl className="product-card__specs">
           <div>
             <dt>Packaging</dt>
@@ -34,10 +35,12 @@ export default function ProductCard({ product }) {
             <dt>{product.sizeId ? 'Size' : 'Pack'}</dt>
             <dd>{quantity}</dd>
           </div>
-          <div>
-            <dt>Net content</dt>
-            <dd>{product.netContent.label}</dd>
-          </div>
+          {showNetContent && (
+            <div>
+              <dt>Net content</dt>
+              <dd>{product.netContent.label}</dd>
+            </div>
+          )}
         </dl>
         <p className="product-card__description">{product.shortDescription}</p>
         <a

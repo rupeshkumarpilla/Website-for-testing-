@@ -19,8 +19,9 @@ export default function ProductDetailPage({ productId }) {
   const family = PACKAGING_BY_ID[product.packagingId];
   const relatedProducts = getRelatedProductConfigurations(product);
   const quantity = product.sizeId
-    ? `Size · ${product.sizeLabel}`
+    ? product.sizeLabel
     : `${product.unitCount} × ${product.unitWeightGrams} g`;
+  const showNetContent = product.netContent.label !== quantity;
 
   const selectVariant = (id) => {
     const nextHash = hrefFor(`${ROUTES.products}/${id}`);
@@ -34,7 +35,7 @@ export default function ProductDetailPage({ productId }) {
           <li><a href={hrefFor(ROUTES.home)}>Home</a></li>
           <li><a href={hrefFor(ROUTES.products)}>Our Honey</a></li>
           <li><a href={hrefFor(`${ROUTES.products}/${family.slug}`)}>{family.shortName}</a></li>
-          <li aria-current="page">{flavour.name}</li>
+          <li aria-current="page">{product.displayName}</li>
         </ol>
       </nav>
 
@@ -52,7 +53,7 @@ export default function ProductDetailPage({ productId }) {
       >
         <div className="product-detail">
           <div className="product-detail__visual">
-            <ProductVisual packagingId={product.packagingId} label={product.displayName} large />
+            <ProductVisual packagingId={product.packagingId} product={product} label={product.displayName} large />
           </div>
 
           <div className="product-detail__info">
@@ -73,15 +74,17 @@ export default function ProductDetailPage({ productId }) {
               </div>
               <div className="spec-item">
                 <dt>{product.sizeId ? 'Available size' : 'Pack quantity'}</dt>
-                <dd>{quantity}</dd>
-              </div>
-              <div className="spec-item">
-                <dt>Net content</dt>
                 <dd>
-                  {product.netContent.label}
+                  {quantity}
                   {product.unitType === 'volume' && <span className="spec-item__note">Volume specification.</span>}
                 </dd>
               </div>
+              {showNetContent && (
+                <div className="spec-item">
+                  <dt>Net content</dt>
+                  <dd>{product.netContent.label}</dd>
+                </div>
+              )}
             </dl>
 
             <div className="product-detail__status">
@@ -103,7 +106,7 @@ export default function ProductDetailPage({ productId }) {
         id="related-products"
         eyebrow="Continue exploring"
         title="Related products"
-        description="Other concepts from the same packaging family or other formats in the same flavour."
+        description="A mix of other formats in this flavour and adjacent concepts across the collection."
         tinted
       >
         <div className="product-grid product-grid--related">

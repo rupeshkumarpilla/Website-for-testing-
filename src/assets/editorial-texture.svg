@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract honey texture editorial cover">
+  <rect width="800" height="500" fill="#2a2720"/>
+  <defs>
+    <radialGradient id="glow" cx="45%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#e4c98d"/>
+      <stop offset="1" stop-color="#9a773f"/>
+    </radialGradient>
+  </defs>
+  <circle cx="400" cy="235" r="170" fill="url(#glow)"/>
+  <g fill="none" stroke="#fff8e9" stroke-width="2" opacity="0.55">
+    <path d="M270 230c55-55 165-55 220 0s-55 115-110 115-165-60-110-115z"/>
+    <path d="M310 185c40 35 130 35 180 0"/>
+    <path d="M310 285c40-35 130-35 180 0"/>
+  </g>
+  <g fill="#fffdf8" opacity="0.75">
+    <circle cx="350" cy="220" r="6"/>
+    <circle cx="420" cy="190" r="4"/>
+    <circle cx="470" cy="260" r="7"/>
+    <circle cx="380" cy="300" r="5"/>
+  </g>
+  <text x="64" y="452" fill="#f8f5ee" font-family="Georgia, serif" font-size="28" letter-spacing="8">SENSORY CHARACTER</text>
+</svg>

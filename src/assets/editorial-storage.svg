@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Abstract jar and pantry storage editorial cover">
+  <rect width="800" height="500" fill="#efe9dc"/>
+  <rect x="95" y="70" width="610" height="360" rx="28" fill="#fffdf8" opacity="0.92"/>
+  <path d="M300 150h200l-18 220H318z" fill="#d7b878" opacity="0.75"/>
+  <path d="M322 116h156v38H322z" fill="#1d1b16"/>
+  <rect x="340" y="205" width="120" height="82" rx="6" fill="#fffdf8" opacity="0.86"/>
+  <text x="400" y="246" text-anchor="middle" fill="#1d1b16" font-family="Georgia, serif" font-size="22" letter-spacing="4">HONIESH</text>
+  <text x="400" y="268" text-anchor="middle" fill="#7c7567" font-family="Arial, sans-serif" font-size="12" letter-spacing="2">CONCEPT</text>
+  <g fill="none" stroke="#9a773f" stroke-width="3" opacity="0.5">
+    <circle cx="180" cy="180" r="42"/>
+    <circle cx="620" cy="320" r="58"/>
+    <path d="M170 320h90M570 150h90"/>
+  </g>
+  <text x="64" y="452" fill="#4d493f" font-family="Georgia, serif" font-size="28" letter-spacing="8">STORAGE NOTES</text>
+</svg>

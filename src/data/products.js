@@ -32,6 +32,7 @@ function buildVariants(family) {
 }
 
 function buildConfiguration(flavour, family, variant) {
+  const sizeSegment = variant.size?.id ?? 'single';
   const slug = variant.size
     ? slugify(`${family.id}-${variant.size.id}-${flavour.id}`)
     : slugify(`${family.id}-${flavour.id}`);
@@ -45,6 +46,7 @@ function buildConfiguration(flavour, family, variant) {
   return Object.freeze({
     id: slug,
     slug,
+    configurationKey: `${family.id}:${flavour.id}:${sizeSegment}`,
     displayName,
     shortDescription,
     formulationNotice: 'Flavour formulation is unconfirmed and requires review before publication.',
@@ -53,9 +55,11 @@ function buildConfiguration(flavour, family, variant) {
     flavourSlug: flavour.slug,
     packagingId: family.id,
     packagingName: family.name,
+    packagingShortName: family.shortName,
     packagingSlug: family.slug,
     sizeId: variant.size ? variant.size.id : null,
     sizeLabel: variant.size ? variant.size.label : null,
+    variantLabel: variant.sizeLabel,
     unitType: variant.size ? variant.size.unitType : variant.netContent.unitType,
     netContent: variant.netContent,
     unitCount: family.unitCount,
@@ -80,6 +84,33 @@ function buildConfiguration(flavour, family, variant) {
   });
 }
 
+function assertCatalogueIntegrity(configurations) {
+  const ids = new Set();
+  const keys = new Set();
+  const triples = new Set();
+
+  configurations.forEach((configuration) => {
+    const triple = `${configuration.packagingId}|${configuration.flavourId}|${configuration.sizeId ?? 'single'}`;
+    if (ids.has(configuration.id)) throw new Error(`Duplicate product id: ${configuration.id}`);
+    if (keys.has(configuration.configurationKey)) {
+      throw new Error(`Duplicate configuration key: ${configuration.configurationKey}`);
+    }
+    if (triples.has(triple)) throw new Error(`Duplicate product variant: ${triple}`);
+    ids.add(configuration.id);
+    keys.add(configuration.configurationKey);
+    triples.add(triple);
+  });
+
+  const expected = PACKAGING_FAMILIES.reduce((total, family) => {
+    const variantCount = family.sizes.length > 0 ? family.sizes.length : 1;
+    return total + variantCount * FLAVOURS.length;
+  }, 0);
+
+  if (configurations.length !== expected) {
+    throw new Error(`Catalogue expected ${expected} configurations, received ${configurations.length}`);
+  }
+}
+
 export const PRODUCT_CONFIGURATIONS = Object.freeze(
   PACKAGING_FAMILIES.flatMap((family) =>
     buildVariants(family).flatMap((variant) =>
@@ -88,6 +119,8 @@ export const PRODUCT_CONFIGURATIONS = Object.freeze(
   ),
 );
 
+assertCatalogueIntegrity(PRODUCT_CONFIGURATIONS);
+
 export const CATALOGUE_SUMMARY = Object.freeze({
   totalConfigurations: PRODUCT_CONFIGURATIONS.length,
   glassJarConfigurations: PRODUCT_CONFIGURATIONS.filter((item) => item.packagingId === 'glass-jars').length,
@@ -95,7 +128,7 @@ export const CATALOGUE_SUMMARY = Object.freeze({
   portionPackConfigurations: PRODUCT_CONFIGURATIONS.filter((item) => item.packagingId === 'portion-packs').length,
   flavourCount: FLAVOURS.length,
   packagingFamilyCount: PACKAGING_FAMILIES.length,
-  detailPageRule: 'No 25-page SEO split; use category, packaging and flavour pages with selectable variants.',
+  detailPageRule: 'One detail view per stable configuration; variants are selectable from each detail view. No separate SEO pages in Stage B.',
 });
 
 const PRODUCT_BY_ID = Object.fromEntries(
@@ -154,9 +187,13 @@ export function getVariantConfigurations(product) {
 export function getRelatedProductConfigurations(product, limit = 4) {
   if (!product) return [];
 
-  const candidates = [
+  const orderedCandidates = [
     ...PRODUCT_CONFIGURATIONS.filter(
       (configuration) => configuration.flavourId === product.flavourId
+        && configuration.packagingId !== product.packagingId,
+    ),
+    ...PRODUCT_CONFIGURATIONS.filter(
+      (configuration) => configuration.flavourId !== product.flavourId
         && configuration.packagingId !== product.packagingId,
     ),
     ...PRODUCT_CONFIGURATIONS.filter(
@@ -166,7 +203,7 @@ export function getRelatedProductConfigurations(product, limit = 4) {
   ];
 
   const seen = new Set([product.id]);
-  return candidates
+  return orderedCandidates
     .filter((configuration) => {
       if (seen.has(configuration.id)) return false;
       seen.add(configuration.id);
@@ -184,7 +221,7 @@ export function getCatalogueFilters() {
     })),
     packagingFamilies: PACKAGING_FAMILIES.map((family) => Object.freeze({
       id: family.id,
-      label: family.name,
+      label: family.shortName,
       value: family.id,
     })),
     glassJarSizes: PACKAGING_BY_ID['glass-jars'].sizes.map((size) => Object.freeze({
