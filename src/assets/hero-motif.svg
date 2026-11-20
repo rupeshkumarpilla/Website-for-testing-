@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 880" fill="none">
+  <defs>
+    <linearGradient id="brass" x1="120" y1="80" x2="620" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7B878" />
+      <stop offset="1" stop-color="#9A773F" />
+    </linearGradient>
+    <linearGradient id="veil" x1="0" y1="0" x2="0" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F5EE" stop-opacity="0.08" />
+      <stop offset="1" stop-color="#F8F5EE" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="#F8F5EE" stroke-opacity="0.045" />
+    </pattern>
+  </defs>
+  <rect width="720" height="880" rx="28" fill="#1D1B16" />
+  <rect width="720" height="880" rx="28" fill="url(#grid)" />
+  <rect width="720" height="880" rx="28" fill="url(#veil)" />
+  <circle cx="360" cy="440" r="268" stroke="url(#brass)" stroke-opacity="0.32" />
+  <circle cx="360" cy="440" r="196" stroke="url(#brass)" stroke-opacity="0.5" />
+  <circle cx="360" cy="440" r="124" stroke="url(#brass)" stroke-opacity="0.28" />
+  <path d="M228 260V620M492 260V620M228 440H492" stroke="url(#brass)" stroke-width="18" />
+  <path d="M84 440H636M360 164V716" stroke="#F8F5EE" stroke-opacity="0.08" />
+  <rect x="292" y="372" width="136" height="136" rx="68" fill="#1D1B16" />
+  <rect x="316" y="396" width="88" height="88" rx="44" fill="url(#brass)" />
+  <path d="M348 460V420M372 460V420M348 440H372" stroke="#1D1B16" stroke-width="8" />
+  <path d="M120 760H600" stroke="url(#brass)" stroke-opacity="0.5" />
+  <path d="M120 120H600" stroke="url(#brass)" stroke-opacity="0.25" />
+</svg>

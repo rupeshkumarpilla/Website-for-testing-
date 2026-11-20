@@ -1,0 +1,87 @@
+.page-header__title,
+.section__title,
+.card__title,
+.empty-state__title,
+.cta-panel__title {
+  text-wrap: balance;
+}
+
+.page-header__description,
+.section__description,
+.card__description,
+.empty-state__description,
+.cta-panel__description {
+  text-wrap: pretty;
+}
+
+.form {
+  margin-inline: 0;
+}
+
+.hero-motif {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.cta-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-7);
+  background-color: var(--color-surface-deep);
+  color: var(--color-on-deep);
+  border: 1px solid rgba(248, 245, 238, 0.16);
+  border-radius: var(--radius-xl);
+}
+
+.cta-panel__eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--color-brass-bright);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.cta-panel__title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-3);
+}
+
+.cta-panel__description {
+  max-width: 38rem;
+  color: rgba(248, 245, 238, 0.72);
+}
+
+.cta-panel .button--primary {
+  background-color: var(--color-brass-bright);
+  color: var(--color-ink);
+}
+
+.cta-panel .button--primary:hover {
+  background-color: var(--color-brass);
+  color: var(--color-on-deep);
+}
+
+.cta-panel .button--secondary {
+  background-color: transparent;
+  border-color: rgba(248, 245, 238, 0.4);
+  color: var(--color-on-deep);
+}
+
+.cta-panel .button--secondary:hover {
+  border-color: var(--color-brass-bright);
+  color: var(--color-brass-bright);
+}
+
+@media (max-width: 640px) {
+  .cta-panel {
+    grid-template-columns: 1fr;
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .cta-panel .button {
+    width: 100%;
+  }
+}

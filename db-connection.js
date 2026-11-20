@@ -14,26 +14,26 @@ dotenv.config();
 const dbOptions = {
   // MongoDB connection options
   mongodb: {
-    uri: process.env.MONGODB_URI || 'mongodb://localhost:27017',
-    database: process.env.MONGODB_DATABASE || 'rooz',
-    username: process.env.MONGODB_USERNAME || 'roozuser',
-    password: process.env.MONGODB_PASSWORD || 'roozpassword',
+    uri: process.env.MONGODB_URI,
+    database: process.env.MONGODB_DATABASE,
+    username: process.env.MONGODB_USERNAME,
+    password: process.env.MONGODB_PASSWORD,
   },
   // MySQL connection options
   mysql: {
-    host: process.env.MYSQL_HOST || 'localhost',
+    host: process.env.MYSQL_HOST,
     port: process.env.MYSQL_PORT || 3306,
-    database: process.env.MYSQL_DATABASE || 'rooz',
-    username: process.env.MYSQL_USERNAME || 'roozuser',
-    password: process.env.MYSQL_PASSWORD || 'roozpassword',
+    database: process.env.MYSQL_DATABASE,
+    username: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSWORD,
   },
   // PostgreSQL connection options
   postgres: {
-    host: process.env.POSTGRES_HOST || 'localhost',
+    host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT || 5432,
-    database: process.env.POSTGRES_DATABASE || 'rooz',
-    username: process.env.POSTGRES_USERNAME || 'roozuser',
-    password: process.env.POSTGRES_PASSWORD || 'roozpassword',
+    database: process.env.POSTGRES_DATABASE,
+    username: process.env.POSTGRES_USERNAME,
+    password: process.env.POSTGRES_PASSWORD,
   },
 };
 

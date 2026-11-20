@@ -1,0 +1,83 @@
+:root {
+  color-scheme: light;
+
+  --color-ink: #16150f;
+  --color-ink-soft: #4d493f;
+  --color-ink-muted: #7c7567;
+  --color-page: #f7f4ed;
+  --color-surface: #fffdf8;
+  --color-surface-alt: #efe9dc;
+  --color-surface-deep: #1d1b16;
+  --color-surface-deep-soft: #2a2720;
+  --color-on-deep: #f8f5ee;
+  --color-border: #ddd5c5;
+  --color-border-soft: #eae4d8;
+  --color-brass: #9a773f;
+  --color-brass-bright: #d7b878;
+  --color-brass-soft: #f1e8d5;
+  --color-focus: #2f6fdb;
+  --color-error: #a4262c;
+  --color-error-soft: #f9eceb;
+
+  --color-accent: var(--color-brass);
+  --color-accent-bright: var(--color-brass-bright);
+  --color-accent-soft: var(--color-brass-soft);
+
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-size-xs: clamp(0.7rem, 0.68rem + 0.1vw, 0.76rem);
+  --font-size-sm: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+  --font-size-base: clamp(1rem, 0.96rem + 0.2vw, 1.06rem);
+  --font-size-lg: clamp(1.12rem, 1.05rem + 0.35vw, 1.3rem);
+  --font-size-xl: clamp(1.35rem, 1.22rem + 0.65vw, 1.65rem);
+  --font-size-2xl: clamp(1.9rem, 1.6rem + 1.4vw, 2.6rem);
+  --font-size-3xl: clamp(2.5rem, 1.9rem + 2.8vw, 4.4rem);
+  --font-size-4xl: clamp(3rem, 2.1rem + 4vw, 5.6rem);
+  --line-height-tight: 1.08;
+  --line-height-heading: 1.22;
+  --line-height-base: 1.7;
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --letter-spacing-tight: -0.03em;
+  --letter-spacing-wide: 0.16em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --section-space: clamp(4rem, 8vw, 8rem);
+  --section-space-tight: clamp(3rem, 5vw, 5rem);
+
+  --radius-sm: 3px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --border-hairline: 1px solid var(--color-border);
+  --border-soft: 1px solid var(--color-border-soft);
+  --border-accent: 1px solid var(--color-brass);
+
+  --shadow-sm: 0 1px 2px rgba(22, 21, 15, 0.05);
+  --shadow-md: 0 12px 32px rgba(22, 21, 15, 0.08);
+  --shadow-lg: 0 24px 64px rgba(22, 21, 15, 0.12);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  --container-max: 1200px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  --breakpoint-mobile: 640px;
+  --breakpoint-tablet: 900px;
+  --breakpoint-desktop: 1120px;
+}

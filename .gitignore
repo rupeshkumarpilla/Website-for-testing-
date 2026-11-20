@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+.vite/
+
+# Environment files (never commit real values)
+.env
+.env.local
+.env.*
+!.env.example
+
+# Secret / key material
+*.pem
+*.key
+*.p12
+*.pfx
+*secret*
+*credentials*
+
+# Logs and local tooling
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+*.swp

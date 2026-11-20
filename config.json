@@ -2,24 +2,24 @@
   "database": {
     "type": "mongodb",
     "mongodb": {
-      "uri": "mongodb://localhost:27017",
+      "uri": "",
       "database": "rooz",
-      "username": "roozuser",
-      "password": "roozpassword"
+      "username": "",
+      "password": ""
     },
     "mysql": {
       "host": "localhost",
       "port": 3306,
       "database": "rooz",
-      "username": "roozuser",
-      "password": "roozpassword"
+      "username": "",
+      "password": ""
     },
     "postgres": {
       "host": "localhost",
       "port": 5432,
       "database": "rooz",
-      "username": "roozuser",
-      "password": "roozpassword"
+      "username": "",
+      "password": ""
     }
   },
   "apiKeys": {
@@ -62,5 +62,6 @@
       "name": "Rooz Greens",
       "link": "/roozgreens"
     }
-  ]
+  ],
+  "_securityNote": "Legacy configuration. Credential values removed; secrets must come from environment variables and must never be committed."
 }
