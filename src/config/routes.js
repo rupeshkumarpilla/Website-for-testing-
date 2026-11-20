@@ -1,5 +1,6 @@
 export const ROUTES = {
   home: '/',
+  products: '/products',
   about: '/about',
   contact: '/contact',
   login: '/login',
@@ -8,6 +9,7 @@ export const ROUTES = {
 
 export const PAGE_TITLES = {
   [ROUTES.home]: 'Home',
+  [ROUTES.products]: 'Our Honey',
   [ROUTES.about]: 'About',
   [ROUTES.contact]: 'Contact',
   [ROUTES.login]: 'Account access',
@@ -15,6 +17,7 @@ export const PAGE_TITLES = {
 
 export const NAV_ITEMS = [
   { label: 'Home', path: ROUTES.home },
+  { label: 'Our Honey', path: ROUTES.products },
   { label: 'About', path: ROUTES.about },
   { label: 'Contact', path: ROUTES.contact },
 ];

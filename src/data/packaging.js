@@ -41,7 +41,7 @@ export const PACKAGING_FAMILIES = Object.freeze([
     unitCount: null,
     unitWeightGrams: null,
     netContent: null,
-    intendedConvenience: 'A familiar jar format for table, pantry and gifting contexts.',
+    intendedConvenience: 'Glass jar format available in 250 g, 500 g and 1 litre.',
     displayOrder: 1,
   },
   {

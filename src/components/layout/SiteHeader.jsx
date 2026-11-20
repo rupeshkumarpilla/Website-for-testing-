@@ -46,18 +46,23 @@ export default function SiteHeader({ path }) {
           aria-label="Primary navigation"
         >
           <ul className="primary-nav__list">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.path}>
-                <a
-                  className={`primary-nav__link${path === item.path ? ' is-active' : ''}`}
-                  href={hrefFor(item.path)}
-                  aria-current={path === item.path ? 'page' : undefined}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActive = item.path === ROUTES.home
+                ? path === item.path
+                : path === item.path || path.startsWith(`${item.path}/`);
+              return (
+                <li key={item.path}>
+                  <a
+                    className={`primary-nav__link${isActive ? ' is-active' : ''}`}
+                    href={hrefFor(item.path)}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

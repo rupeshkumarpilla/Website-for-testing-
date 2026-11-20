@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { ROUTES } from '../config/routes.js';
 
 function readPath() {
-  const hash = window.location.hash.replace(/^#/, '');
-  if (!hash || hash === '/') return ROUTES.home;
-  return hash.startsWith('/') ? hash : `/${hash}`;
+  const rawPath = window.location.hash.replace(/^#/, '').split('?')[0];
+  if (!rawPath || rawPath === '/') return ROUTES.home;
+  const normalizedPath = rawPath.length > 1 ? rawPath.replace(/\/+$/, '') : rawPath;
+  return normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
 }
 
 export function useHashRoute() {

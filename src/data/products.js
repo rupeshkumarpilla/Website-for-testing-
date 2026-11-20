@@ -32,16 +32,22 @@ function buildVariants(family) {
 }
 
 function buildConfiguration(flavour, family, variant) {
-  const variantPart = variant.size ? variant.size.id : family.id;
-  const slug = slugify(`${family.id}-${variantPart}-${flavour.id}`);
+  const slug = variant.size
+    ? slugify(`${family.id}-${variant.size.id}-${flavour.id}`)
+    : slugify(`${family.id}-${flavour.id}`);
   const displayName = variant.size
     ? `${flavour.name} / ${family.shortName} ${variant.size.label}`
     : `${flavour.name} / ${family.shortName}`;
+  const shortDescription = variant.size
+    ? `${flavour.name} concept in a ${variant.size.label} glass jar. Packaging shown is a concept illustration.`
+    : `${flavour.name} concept in the ${family.format}. Packaging shown is a concept illustration.`;
 
   return Object.freeze({
     id: slug,
     slug,
     displayName,
+    shortDescription,
+    formulationNotice: 'Flavour formulation is unconfirmed and requires review before publication.',
     flavourId: flavour.id,
     flavourName: flavour.name,
     flavourSlug: flavour.slug,
@@ -59,7 +65,7 @@ function buildConfiguration(flavour, family, variant) {
     formulationStatus: FORMULATION_STATUS.unconfirmed,
     visualStatus: family.visualStatus,
     visualDisclosure: family.visualDisclosure,
-    detailPageStatus: 'not-planned-unless-distinctive-content-added',
+    detailPageStatus: 'variant-view',
     enquiryType: 'product-enquiry',
     price: null,
     availability: null,
@@ -112,6 +118,61 @@ export function getProductConfigurationsByGlassJarSize(sizeId) {
   return PRODUCT_CONFIGURATIONS.filter(
     (configuration) => configuration.packagingId === 'glass-jars' && configuration.sizeId === sizeId,
   );
+}
+
+export function findProductConfiguration({ packagingId, flavourId, sizeId = null }) {
+  return PRODUCT_CONFIGURATIONS.find(
+    (configuration) =>
+      configuration.packagingId === packagingId
+      && configuration.flavourId === flavourId
+      && configuration.sizeId === sizeId,
+  ) ?? null;
+}
+
+export function getVariantConfigurations(product) {
+  if (!product) return [];
+
+  if (product.packagingId === 'glass-jars') {
+    return PACKAGING_BY_ID['glass-jars'].sizes
+      .map((size) => findProductConfiguration({
+        packagingId: 'glass-jars',
+        flavourId: product.flavourId,
+        sizeId: size.id,
+      }))
+      .filter(Boolean);
+  }
+
+  return FLAVOURS
+    .map((flavour) => findProductConfiguration({
+      packagingId: product.packagingId,
+      flavourId: flavour.id,
+      sizeId: null,
+    }))
+    .filter(Boolean);
+}
+
+export function getRelatedProductConfigurations(product, limit = 4) {
+  if (!product) return [];
+
+  const candidates = [
+    ...PRODUCT_CONFIGURATIONS.filter(
+      (configuration) => configuration.flavourId === product.flavourId
+        && configuration.packagingId !== product.packagingId,
+    ),
+    ...PRODUCT_CONFIGURATIONS.filter(
+      (configuration) => configuration.packagingId === product.packagingId
+        && configuration.flavourId !== product.flavourId,
+    ),
+  ];
+
+  const seen = new Set([product.id]);
+  return candidates
+    .filter((configuration) => {
+      if (seen.has(configuration.id)) return false;
+      seen.add(configuration.id);
+      return true;
+    })
+    .slice(0, limit);
 }
 
 export function getCatalogueFilters() {

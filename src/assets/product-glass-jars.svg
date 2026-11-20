@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720" role="img">
+  <defs>
+    <linearGradient id="jar-honey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e4c47f"/>
+      <stop offset="1" stop-color="#a87832"/>
+    </linearGradient>
+    <linearGradient id="jar-lid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d1b16"/>
+      <stop offset="1" stop-color="#4a4334"/>
+    </linearGradient>
+    <radialGradient id="jar-glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="720" fill="url(#jar-glow)"/>
+  <circle cx="320" cy="310" r="235" fill="none" stroke="#d9c9a8" stroke-width="1"/>
+  <circle cx="320" cy="310" r="190" fill="none" stroke="#e3d7bf" stroke-width="1"/>
+  <ellipse cx="320" cy="616" rx="210" ry="26" fill="#c9b995" opacity="0.28"/>
+  <g transform="translate(78 120)">
+    <rect x="54" y="112" width="132" height="300" rx="26" fill="url(#jar-honey)" opacity="0.88"/>
+    <rect x="66" y="92" width="108" height="34" rx="10" fill="url(#jar-lid)"/>
+    <rect x="78" y="210" width="84" height="104" rx="6" fill="#fffdf8" opacity="0.95"/>
+    <text x="120" y="276" text-anchor="middle" font-family="Georgia, serif" font-size="54" fill="#9a773f">H</text>
+    <path d="M68 142h104" stroke="#fff4d8" stroke-width="3" opacity="0.5"/>
+  </g>
+  <g transform="translate(220 64)">
+    <rect x="62" y="130" width="156" height="366" rx="30" fill="url(#jar-honey)"/>
+    <rect x="76" y="106" width="128" height="40" rx="12" fill="url(#jar-lid)"/>
+    <rect x="90" y="248" width="100" height="126" rx="8" fill="#fffdf8"/>
+    <text x="140" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#16150f">H</text>
+    <text x="140" y="354" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" letter-spacing="3" fill="#7c7567">HONIESH</text>
+    <path d="M78 166h124" stroke="#fff4d8" stroke-width="4" opacity="0.55"/>
+  </g>
+  <g transform="translate(408 150)">
+    <rect x="46" y="96" width="118" height="270" rx="24" fill="url(#jar-honey)" opacity="0.82"/>
+    <rect x="58" y="78" width="94" height="30" rx="9" fill="url(#jar-lid)"/>
+    <rect x="68" y="184" width="74" height="92" rx="5" fill="#fffdf8" opacity="0.95"/>
+    <text x="105" y="244" text-anchor="middle" font-family="Georgia, serif" font-size="48" fill="#9a773f">H</text>
+    <path d="M58 124h92" stroke="#fff4d8" stroke-width="3" opacity="0.45"/>
+  </g>
+  <path d="M118 640h404" stroke="#9a773f" stroke-width="1"/>
+  <text x="320" y="672" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="4" fill="#7c7567">GLASS JAR CONCEPT</text>
+</svg>
