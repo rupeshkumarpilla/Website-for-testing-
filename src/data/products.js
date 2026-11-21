@@ -128,7 +128,7 @@ export const CATALOGUE_SUMMARY = Object.freeze({
   portionPackConfigurations: PRODUCT_CONFIGURATIONS.filter((item) => item.packagingId === 'portion-packs').length,
   flavourCount: FLAVOURS.length,
   packagingFamilyCount: PACKAGING_FAMILIES.length,
-  detailPageRule: 'One detail view per stable configuration; variants are selectable from each detail view. No separate SEO pages in Stage B.',
+  detailPageRule: 'One detail view per stable configuration; variants are selectable from each detail view. No separate SEO pages in the current frontend-only build.',
 });
 
 const PRODUCT_BY_ID = Object.fromEntries(

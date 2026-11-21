@@ -2,7 +2,7 @@
 
 ## Current architecture
 
-The active website lives in `src/` and is built by Vite from `src/index.html`. Routing is hash-based and driven by the registry in `src/config/routes.js`. `App.jsx` resolves the current path to a page component and wraps every page in `SiteLayout`, which provides a skip link, responsive header, main landmark and footer.
+The active website lives in `src/` and is built by Vite from `src/index.html`. `src/config/routeManifest.js` is the single source of truth for routes, navigation and page titles; `src/config/routes.js` remains as a compatibility facade. `src/config/basePath.js` owns the `/Website-for-testing-/` base path, URL normalization and history navigation, while `src/config/browserRoute.js` resolves clean URLs and migrates legacy `#/` URLs to clean paths. Clean static URLs are prerendered; hash routing is not the current runtime. `App.jsx` resolves the current route to a page component and wraps every page in `SiteLayout`, which provides a skip link, responsive header, main landmark and footer.
 
 Replaceable company copy lives in `src/config/content.js`. All unsupported values use `PLACEHOLDER_TEXT` from `src/config/site.js`, and missing contact fields are `null` so pages can render explicit placeholders without inventing details.
 
@@ -29,7 +29,7 @@ No company services, products, contact details, certifications or achievements w
 
 ## Layer 1 completed work
 
-- Centralized site identity, route registry, navigation and page titles.
+- Centralized site identity, route manifest, navigation and page titles; `routeManifest.js` is now the single routing source of truth and `routes.js` is a compatibility facade.
 - Responsive header with accessible mobile menu, Escape-to-close and route-change reset.
 - Site shell with skip link, semantic landmarks and footer.
 - Reusable Button, Card, TextField, StatusNotice, EmptyState, Section and PageHeader components.
@@ -56,6 +56,18 @@ No company services, products, contact details, certifications or achievements w
 - Refined header, footer, buttons, cards, forms, empty states and CTA panels across all existing pages.
 - Verified rendered pages with Chrome DevTools at 1440px, 768px and 390px; no horizontal overflow, correct grid collapse and mobile nav toggle.
 
+## Layer 4 completed work
+
+- Added a route-view fade-and-rise transition on page changes, disabled under `prefers-reduced-motion: reduce`.
+- Moved focus to the `#main-content` landmark on route changes with `preventScroll`, matching the existing skip-link behaviour.
+- Closed the mobile navigation on outside click or tap in addition to Escape and route-change reset.
+- Added a subtle hover lift and refined shadow transition to cards and product cards.
+
+## Layer 5 completed work
+
+- Added `loading="lazy"` and `decoding="async"` to product and editorial images, while keeping large visuals eager.
+- Verified the production build: `npm run build` completes and prerenders 25 canonical routes plus `404.html`, `sitemap.xml` and `robots.txt`.
+
 ## Cleanup completed work
 
 - Removed the legacy ROOZ root pages, sub-brand pages, legacy stylesheets and legacy JavaScript demos after confirming the React app replaced them.
@@ -67,8 +79,8 @@ No company services, products, contact details, certifications or achievements w
 1. Layer 1: technical and structural foundation — complete.
 2. Layer 2: HONIESH content structure with approved placeholders — complete.
 3. Layer 3: premium visual identity and design system refinement — complete.
-4. Layer 4: refined interactions, motion and micro-details — pending approval.
-5. Layer 5: full QA, responsive verification and optimization — pending.
+4. Layer 4: refined interactions, motion and micro-details — complete.
+5. Layer 5: full QA, responsive verification and optimization — complete.
 
 ## Information required from you
 
@@ -81,13 +93,12 @@ No company services, products, contact details, certifications or achievements w
 ## Remaining work
 
 - Replace centralized placeholders with approved content when supplied.
-- Complete interaction polish and full QA in Layers 4–5.
-- Add automated tests and deployment configuration in a later phase.
+- Add automated tests in a later phase.
 - Authentication and contact submission remain intentionally non-functional.
 
 ## Known limitations
 
-- Hash routing is adequate for a static site but is not a server-aware router.
+- The site uses clean prerendered static URLs; legacy `#/` URLs are migrated on load and there is no current hash routing.
 - No data loading exists, so loading states are not implemented; empty, error and notice states are.
 - Login and contact forms only report that their backend flows are not connected.
 - Legacy ROOZ files no longer exist in the repository.

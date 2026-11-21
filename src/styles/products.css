@@ -258,12 +258,14 @@
   border-radius: var(--radius-lg);
   background-color: var(--color-surface);
   box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-base),
+    transform var(--transition-base);
 }
 
 .product-card:hover {
   border-color: var(--product-accent);
   box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .product-card__visual {

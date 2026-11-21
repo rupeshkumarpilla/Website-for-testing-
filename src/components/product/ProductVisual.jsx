@@ -18,6 +18,7 @@ export default function ProductVisual({ packagingId, product = null, label, larg
           src={visual.src}
           alt={alt}
           loading={large ? 'eager' : 'lazy'}
+          decoding="async"
         />
         <span className="product-visual__badge">Concept illustration</span>
         {variantBadge && <span className="product-visual__variant">{variantBadge}</span>}

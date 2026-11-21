@@ -91,7 +91,8 @@ const vite = await createServer({
 
 try {
   const { renderRoute } = await vite.ssrLoadModule('/entry-server.jsx');
-  const { PRERENDER_ROUTES, NOT_FOUND_ROUTE } = await vite.ssrLoadModule('/config/routeManifest.js');
+  const { assertRouteManifest, PRERENDER_ROUTES, NOT_FOUND_ROUTE } = await vite.ssrLoadModule('/config/routeManifest.js');
+  assertRouteManifest();
   const { seoForRoute, SITEMAP_URL } = await vite.ssrLoadModule('/config/seo.js');
   const template = await readFile(templatePath, 'utf8');
 

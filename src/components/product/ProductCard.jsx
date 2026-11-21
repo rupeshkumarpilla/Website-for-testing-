@@ -21,7 +21,7 @@ export default function ProductCard({ product }) {
       </div>
       <div className="product-card__body">
         <div className="product-card__brand">
-          <img src={brandMark} alt="" aria-hidden="true" />
+          <img src={brandMark} alt="" aria-hidden="true" loading="lazy" decoding="async" />
           <span>HONIESH</span>
         </div>
         <p className="product-card__flavour">Flavour concept · {flavour.name}</p>

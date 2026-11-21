@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SITE } from '../../config/site.js';
 import { NAV_ITEMS, hrefFor, ROUTES } from '../../config/routes.js';
 import brandMark from '../../assets/brand-mark.svg';
 
 export default function SiteHeader({ path }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+  const toggleRef = useRef(null);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -19,6 +21,19 @@ export default function SiteHeader({ path }) {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onDocumentClick = (event) => {
+      const nav = navRef.current;
+      const toggle = toggleRef.current;
+      if (!nav || !toggle) return;
+      if (nav.contains(event.target) || toggle.contains(event.target)) return;
+      setMenuOpen(false);
+    };
+    document.addEventListener('click', onDocumentClick);
+    return () => document.removeEventListener('click', onDocumentClick);
+  }, [menuOpen]);
+
   return (
     <header className="site-header">
       <div className="container site-header__inner">
@@ -29,6 +44,7 @@ export default function SiteHeader({ path }) {
 
         <button
           type="button"
+          ref={toggleRef}
           className="nav-toggle"
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
@@ -41,6 +57,7 @@ export default function SiteHeader({ path }) {
         </button>
 
         <nav
+          ref={navRef}
           id="primary-navigation"
           className={`primary-nav${menuOpen ? ' is-open' : ''}`}
           aria-label="Primary navigation"

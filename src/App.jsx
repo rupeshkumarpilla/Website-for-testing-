@@ -42,11 +42,15 @@ export default function App({ initialRoute }) {
     const root = document.getElementById('root');
     if (root) root.dataset.routeId = route.id;
     window.scrollTo(0, 0);
+    const main = document.getElementById('main-content');
+    if (main) main.focus({ preventScroll: true });
   }, [route.id, route.path, route.documentTitle]);
 
   return (
     <SiteLayout path={route.path}>
-      <Page {...route.props} />
+      <div className="route-view" key={route.id}>
+        <Page {...route.props} />
+      </div>
     </SiteLayout>
   );
 }

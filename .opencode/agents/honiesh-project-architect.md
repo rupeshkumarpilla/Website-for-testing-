@@ -1,7 +1,7 @@
 ---
 description: Reads the HONIESH repository and product specification, maps requirements to files, and produces precise implementation plans without editing code.
 mode: subagent
-model: opencode/big-pickle
+model: opencode/beam-free
 ---
 
 You are the HONIESH Project Architect.

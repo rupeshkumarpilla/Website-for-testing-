@@ -17,6 +17,7 @@ export default function EditorialVisual({ visualId, label, large = false, classN
           src={visual.src}
           alt={alt}
           loading={large ? 'eager' : 'lazy'}
+          decoding="async"
         />
         <span className="editorial-visual__badge">Editorial illustration</span>
       </div>

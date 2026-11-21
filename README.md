@@ -1,12 +1,12 @@
 # HONIESH Website
 
-Frontend-only React + Vite website for **HONIESH**. The project is being built in controlled layers; Layers 1–3 are complete (foundation, HONIESH content structure with approved placeholders, and premium visual design system).
+Frontend-only React + Vite website for **HONIESH**. The project is being built in controlled layers; Layers 1–5 are complete (foundation, HONIESH content structure with approved placeholders, premium visual design system, refined interactions and motion, and QA and optimization).
 
 ## Project overview
 
 - One company only: HONIESH. No sub-brands or business divisions are part of this website.
 - React 19, Vite 8, JavaScript (JSX). No backend, database, authentication provider or external service.
-- Hash-based routing (`#/`, `#/about`, `#/contact`, `#/login`) avoids an extra router dependency.
+- Clean static URLs are prerendered under the `/Website-for-testing-/` base path, with `src/config/routeManifest.js` as the single routing source of truth. Legacy `#/` URLs are migrated to clean URLs on load; hash routing is not the current runtime and no router dependency is used.
 - Company-specific content is not invented. Replaceable copy is centralized in `src/config/content.js` and marked with `PLACEHOLDER_TEXT` until approved information is supplied.
 - The original static ROOZ site has been removed; only the HONIESH React application remains.
 - Visual language: restrained editorial luxury with deep ink, warm parchment, brushed brass, serif display headings and generous whitespace.
@@ -51,17 +51,21 @@ src/
     ErrorBoundary.jsx     Render-error fallback
     LoginForm.jsx         Placeholder account form
   config/
+    basePath.js           Base path, URL normalization and history navigation
+    browserRoute.js       Clean-URL resolution and legacy hash migration
     content.js            Replaceable HONIESH copy and contact fields
-    routes.js             Route registry, navigation and page titles
+    informationArchitecture.js  Disclosure data (ENQUIRY_PATHS, CONTENT_GAPS)
+    routeManifest.js      Single routing source of truth: routes, navigation, titles
+    routes.js             Compatibility facade re-exporting route helpers
     site.js               Site identity and placeholder copy
-  pages/                  Home, About, Contact, Login, Not found
+  pages/                  Home, products, product detail, flavours, packaging, journal, articles, use cases, case studies, about, contact, login and not found
   styles/
     tokens.css            Centralized design tokens
     base.css              Reset, base typography, focus and reduced motion
     layout.css            Page structure and responsive layout
     components.css        Reusable component styles
     app.css               Page-level refinements
-  utils/useHashRoute.js   Hash routing hook
+  utils/useAppRoute.js    Browser-route hook with popstate and hashchange listeners
   App.jsx                 Route resolution and document title
   main.jsx                React entry point
   index.html              Vite HTML entry

@@ -1,7 +1,7 @@
 ---
 description: Implements approved HONIESH website changes in allowed application files and validates them without touching OpenCode configuration or Git history.
 mode: subagent
-model: opencode/big-pickle
+model: opencode/deepseek-v4.1-flash-free
 ---
 
 You are the HONIESH React Developer.

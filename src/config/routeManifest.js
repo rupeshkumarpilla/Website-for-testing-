@@ -30,7 +30,6 @@ function makeRoute(config) {
     prerender: true,
     public: true,
     queryOnly: false,
-    props: Object.freeze({}),
     ...config,
     props: Object.freeze(config.props ?? {}),
     documentTitle: config.documentTitle ?? makeDocumentTitle(config.title, config.id === 'home'),
@@ -198,6 +197,60 @@ export const ROUTE_MANIFEST = Object.freeze([
 export const PRERENDER_ROUTES = Object.freeze(
   ROUTE_MANIFEST.filter((route) => route.prerender),
 );
+
+export function assertRouteManifest() {
+  if (!Array.isArray(ROUTE_MANIFEST) || ROUTE_MANIFEST.length === 0) {
+    throw new Error('Route manifest must be a non-empty array.');
+  }
+
+  const ids = new Set();
+  const paths = new Set();
+
+  ROUTE_MANIFEST.forEach((route) => {
+    if (route === null || typeof route !== 'object' || Array.isArray(route)) {
+      throw new Error('Every route manifest entry must be an object.');
+    }
+
+    for (const field of ['id', 'path', 'title', 'component', 'kind']) {
+      if (typeof route[field] !== 'string' || route[field].trim() === '') {
+        throw new Error(`Route field "${field}" must be a non-empty string.`);
+      }
+    }
+
+    for (const flag of ['prerender', 'public', 'queryOnly']) {
+      if (typeof route[flag] !== 'boolean') {
+        throw new Error(`Route "${route.id}" flag "${flag}" must be a boolean.`);
+      }
+    }
+
+    if (ids.has(route.id)) {
+      throw new Error(`Duplicate route id: ${route.id}`);
+    }
+    ids.add(route.id);
+
+    if (!route.queryOnly && route.kind !== 'fallback') {
+      const path = normalizeSitePathname(route.path);
+      if (paths.has(path)) {
+        throw new Error(`Duplicate route path: ${path}`);
+      }
+      paths.add(path);
+    }
+  });
+
+  const fallbackRoutes = ROUTE_MANIFEST.filter((route) => route.kind === 'fallback');
+  if (fallbackRoutes.length !== 1 || fallbackRoutes[0].id !== 'not-found') {
+    throw new Error('Route manifest must contain exactly one fallback route with id "not-found".');
+  }
+
+  const queryOnlyRoutes = ROUTE_MANIFEST.filter((route) => route.queryOnly);
+  if (queryOnlyRoutes.length !== 1 || queryOnlyRoutes[0].id !== 'product-detail') {
+    throw new Error('Route manifest must contain exactly one query-only route with id "product-detail".');
+  }
+
+  if (PRERENDER_ROUTES.some((route) => route.prerender !== true)) {
+    throw new Error('PRERENDER_ROUTES contains a route that is not marked for prerendering.');
+  }
+}
 
 export const NOT_FOUND_ROUTE_EXPORT = NOT_FOUND_ROUTE;
 
