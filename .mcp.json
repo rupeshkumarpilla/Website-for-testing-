@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    },
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp",
+        "--headless",
+        "--isolated",
+        "--output-dir",
+        "/var/folders/kn/81sn13750c3d182jhk143j_c0000gn/T/opencode/playwright-output",
+        "--allowed-origins",
+        "http://localhost:*;http://127.0.0.1:*;https://rupeshkumarpilla.github.io",
+        "--allowed-hosts",
+        "localhost,127.0.0.1,rupeshkumarpilla.github.io"
+      ],
+      "enabled": false
+    }
+  }
+}

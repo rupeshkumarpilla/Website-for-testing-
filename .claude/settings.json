@@ -1,0 +1,128 @@
+{
+  "permissions": {
+    "default": "deny",
+    "allow": [
+      "Bash(pwd)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(cat *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git show*)",
+      "Bash(git remote*)",
+      "Bash(git ls-files*)",
+      "Bash(npm test*)",
+      "Bash(npm run test*)",
+      "Bash(npm run build*)",
+      "Bash(npm run lint*)",
+      "Bash(npm run typecheck*)",
+      "Bash(npm run check*)",
+      "Bash(pnpm test*)",
+      "Bash(pnpm build*)",
+      "Bash(pnpm lint*)",
+      "Bash(pnpm typecheck*)",
+      "Bash(yarn test*)",
+      "Bash(yarn build*)",
+      "Bash(yarn lint*)",
+      "Bash(yarn typecheck*)",
+      "Bash(bun test*)",
+      "Bash(bun run build*)",
+      "Bash(bun run lint*)",
+      "Bash(bun run typecheck*)",
+      "Bash(npm install*)",
+      "Bash(npm ci*)",
+      "Bash(pnpm install*)",
+      "Bash(yarn install*)",
+      "Bash(bun install*)",
+      "Bash(npx *)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git checkout*)",
+      "Bash(git switch*)",
+      "Bash(git restore*)",
+      "Bash(git stash*)",
+      "Bash(git tag*)",
+      "Bash(git commit --amend*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean *)",
+      "Bash(git rebase *)",
+      "Bash(git reset*)",
+      "Bash(rm *)",
+      "Bash(find * -delete*)",
+      "Bash(sudo *)"
+    ],
+    "deny": [
+      ".env",
+      "**/.env",
+      ".env.*",
+      "**/.env.*",
+      "*.env",
+      "**/*.env",
+      "*.env.*",
+      "**/*.env.*",
+      "*.env.example",
+      "**/*.env.example",
+      "api-keys.json",
+      "**/api-keys.json",
+      ".git/**",
+      ".github/**",
+      "opencode*.json*",
+      ".opencode/**",
+      "HONIESH_PROJECT.md"
+    ],
+    "read": {
+      "src/**": "allow",
+      "scripts/**": "allow",
+      "public/**": "allow",
+      "docs/**": "allow",
+      "backend/**": "ask",
+      "server/**": "ask"
+    },
+    "write": {
+      "src/**": "allow",
+      "scripts/**": "allow",
+      "public/**": "allow",
+      "package.json": "ask",
+      "package-lock.json": "ask",
+      "vite.config.js": "allow",
+      "index.html": "allow",
+      "README.md": "allow",
+      "DEVELOPMENT.md": "allow",
+      "CLAUDE.md": "allow",
+      ".claude/agents/**": "allow",
+      ".claude/skills/**": "allow",
+      "tests/**": "ask"
+    },
+    "edit": {
+      "src/**": "allow",
+      "scripts/**": "allow",
+      "public/**": "allow",
+      "package.json": "ask",
+      "package-lock.json": "ask",
+      "vite.config.js": "allow",
+      "index.html": "allow",
+      "README.md": "allow",
+      "DEVELOPMENT.md": "allow",
+      "CLAUDE.md": "allow"
+    },
+    "bash": {
+      "read": {
+        "*": "allow"
+      },
+      "write": {
+        "*": "deny"
+      }
+    }
+  },
+  "mcp": {
+    "context7": {
+      "enabled": true,
+      "type": "remote",
+      "command": "https://mcp.context7.com/mcp"
+    }
+  }
+}
